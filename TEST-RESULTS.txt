@@ -1,0 +1,15 @@
+Nedostaci i zapazanja
+
+Validni izrazi rade korektno (4+5=9, 10+5*4+3=33).
+Greške:
+   - Prazan izraz baca izuzetak.
+   - Izraz koji se završava operatorom (npr. "5+") izaziva grešku.
+   - Nevalidni izrazi (npr. "4++5") vraćaju samo "ERROR" bez detalja.
+   - Nema podrške za zagrade.
+   - Globalna promenljiva finalResult može da izazove probleme u paralelnom izvršavanju.
+   - Deljenje sa nulom vraća Infinity umesto jasne greške.
+Preporuke:
+   - Dodati podršku za zagrade.
+   - Ukloniti globalnu promenljivu finalResult.
+   - Poboljšati poruke o greškama.
+   - Dodati validaciju ulaznog izraza.

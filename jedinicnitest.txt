@@ -1,0 +1,34 @@
+import org.junit.Test;
+import java.util.ArrayList;
+import java.util.List;
+import static org.junit.Assert.*;
+
+public class CalculatorTest {
+
+    @Test
+    public void testCalculate_PriorityWithMultiplicationAndAddition() {
+        // 1. ARRANGE - Priprema test podataka za izraz: 10 + 5 * 4 + 3
+        List<Float> numbers = new ArrayList<>();
+        numbers.add(10.0f);
+        numbers.add(5.0f);
+        numbers.add(4.0f);
+        numbers.add(3.0f);
+
+        List<String> operations = new ArrayList<>();
+        operations.add("+");
+        operations.add("*");
+        operations.add("+");
+
+        // Očekivani rezultat prema matematičkom prioritetu: 10 + (5 * 4) + 3 = 33.0
+        float ocekivaniRezultat = 33.0f;
+
+        // 2. ACT - Izvršavanje metode koja se testira
+        Calculator.Calculate(numbers, operations);
+        float stvarniRezultat = Calculator.finalResult;
+
+        // 3. ASSERT - Provera da li je dobijeni rezultat identičan očekivanom
+        // Treći parametar (0.001f) je dozvoljeno odstupanje (delta) za float tipove podataka
+        assertEquals("Kalkulator nije ispravno izračunao izraz poštujući prioritet operacija!", 
+                     ocekivaniRezultat, stvarniRezultat, 0.001f);
+    }
+}
